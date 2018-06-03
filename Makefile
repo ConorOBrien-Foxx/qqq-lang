@@ -1,5 +1,5 @@
 CC=g++
-SOURCES=./src/qqq.cpp
+SOURCES=./cpp/qqq.cpp
 EXECUTABLE=./bin/qqq
 
 all:
