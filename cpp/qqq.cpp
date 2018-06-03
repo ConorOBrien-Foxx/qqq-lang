@@ -45,6 +45,7 @@ int from_line(environment &env, std::string &line, int open_quotes = 0);
 int from_stream(environment &env, std::istream &stream, int open_quotes = 0);
 void interactive_mode(environment &env);
 void print_cell(CELL cell);
+char get_cell();
 
 
 int main(int argc, const char* argv[]) {
@@ -95,6 +96,19 @@ void print_cell(CELL cell) {
         std::cout << "0x" << std::hex << (int)cell << std::dec;
 }
 
+/*
+ * Reads a character from STDIN
+ */
+char get_cell() {
+    
+    int i = getchar();
+    
+    if(i == -1)
+        return 0;
+    else
+        return (char)i;
+    
+}
 
 /*
  * Reads code from a line, returns number of unmatched quotes
@@ -232,9 +246,7 @@ void interpret(environment &env) {
                 break;
 
             case '?':
-                CELL cell;
-                std::cin >> cell;
-                (*env.mp) = cell;
+                (*env.mp) = get_cell();
                 env.ip++;
                 break;
 
